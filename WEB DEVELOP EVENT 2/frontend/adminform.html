@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .accept-btn, .reject-btn {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .accept-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .reject-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Page - Bookings</h1>
+    <table id="bookingTable">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Event</th>
+                <th>Start time</th>
+                <th>End time</th>
+                <th>Duration</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Booking rows will be added here dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize bookings array
+            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+            // Function to create table rows from booking data
+            function createBookingRows() {
+                const tableBody = document.querySelector('#bookingTable tbody');
+                tableBody.innerHTML = ''; // Clear existing rows
+                bookings.forEach((booking, index) => {
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${booking.eventDate}</td>
+                        <td>${booking.eventName}</td>
+                        <td>${booking.startTime}</td>
+                        <td>${booking.endTime}</td>
+                        <td>${booking.duration}</td>
+                        <td>
+                            <button class="accept-btn" data-index="${index}">Accept</button>
+                            <button class="reject-btn" data-index="${index}">Reject</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(newRow);
+                });
+            }
+
+            // Call the function to create initial table rows
+            createBookingRows();
+
+            // Add event listener to accept and reject buttons
+            document.querySelector('#bookingTable tbody').addEventListener('click', function(event) {
+                const index = parseInt(event.target.getAttribute('data-index'));
+                if (event.target.classList.contains('accept-btn')) {
+                    // Handle accept action
+                    console.log("Accepted booking at index:", index);
+                    bookings[index].accepted = true; // Mark the booking as accepted
+                    localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage
+                    createBookingRows(); // Update the table with the new booking data
+
+                    // Update the color of the calendar (if applicable)
+                    updateCalendarColor(bookings[index]);
+                } else if (event.target.classList.contains('reject-btn')) {
+                    // Handle reject action
+                    bookings.splice(index, 1); // Remove the rejected booking from the array
+                    localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage
+                    createBookingRows(); // Update the table with the new booking data
+                }
+            });
+
+            // Function to update calendar color based on booking duration
+            function updateCalendarColor(booking) {
+                const date = new Date(booking.eventDate);
+                const dayIndex = date.getDay();
+                let color;
+
+                switch (booking.duration) {
+                    case 'Full day':
+                        color = 'green';
+                        break;
+                    case 'Morning':
+                        color = 'blue';
+                       break;
+                }}});</script>

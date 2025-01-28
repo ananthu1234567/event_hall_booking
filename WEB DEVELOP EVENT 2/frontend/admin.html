@@ -1,0 +1,147 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login form</title>
+    <link rel="stylesheet" href="loginstyle.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <form id="loginForm">
+            <h1>LOGIN</h1>
+            <div class="input-box">
+                <input type="email" id = "email" name = "email" placeholder="Email" required>
+                <i class='bx bx-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id = "password" name = "password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt' ></i>            </div>
+            <div class="remember-forget">
+                <label><input type="checkbox">Remember Me</label>
+                <a href="#">Forget Password?</a><br><br>
+            </div>
+            <div class="home">
+             <a href="index.html" class = "home">Home</a><br><br>
+            </div>
+          
+            <center><button type = "submit" onclick="call2()" class = "btn">Login</button></center>
+            <a style="display:block" id="myanchor" href="adminform.html">login</a>
+
+        </form>
+    </div>
+    <!-- <script>
+        document.getElementById("loginForm").addEventListener("submit", async(event)=>{
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const email = formData.get("email");
+            const password = formData.get("password");
+
+            try{
+                
+                const response = await fetch("/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({email, password})
+                });
+                  
+                if(!response.ok){
+                    throw new Error("Invalid email or password");
+                    alert("Login Successful");
+                }
+
+
+                const data = await response.json();
+                if(data.token){
+
+                    window.location.href = "indexhall.html";
+                }
+                else{
+                    throw new Error("Token not found in response");
+                }
+            }catch(error){
+                console.error("Error during  login:", error);
+                alert("Error during login:");
+
+            }
+        });
+    </script> -->
+   
+    <script>
+        /* localStorage.setItem('isLogin', 'true'); */
+       // const storedLogin = localStorage.getItem('isLogin');
+        const storedLogin = localStorage.getItem('isLogin');
+if (storedLogin == 'true') {
+    window.location.href = "adminform.html";
+    //alert('heiii');
+}
+console.log(window.location.href); 
+        //window.location.href="indexhall.html";
+        console.log(window.location.href);
+        // Define the data as a JSON object
+var users2 = [
+  {
+    "_id": "65f2f26393d523caef2de730",
+    "email" : "cses1admin@gmail.com",
+    "password": "s1cse_24"
+
+  },
+  {
+    "_id": "65f2f26393d523caef2de731",
+    "email": "eces1admin@gmail.com",
+    "password": "s1ece_24"
+  },
+  {
+    "_id": "65f28d9264ed0a013ef8fc91",
+    "email": "mechs1admin@gmail.com",
+    "password": "s1mech_24"
+  },
+  {
+    "_id": "65f28d9264ed0a013ef8fc92",
+    "email": "shs1admin@gmail.com",
+    "password": "s1sh_24"
+  }
+];
+
+function login2(email, password) {
+    console.log(email,password);
+  for (var i = 0; i < users2.length; i++) {
+    if (users2[i].email === email && users2[i].password === password) {
+      return true;
+    }
+  }
+  return false; 
+}
+
+
+function call2(){
+   
+   const inputEmail=document.getElementById('email').value;
+   const inputPassword=document.getElementById('password').value;
+if (login2(inputEmail, inputPassword)) {
+    alert("login Success");
+    redirectToIndexHall();
+    window.location.reload();
+   // window.location.href="indexhall.html";
+} else {
+  alert("Invalid email or password");
+}
+}
+
+function move(){
+
+}
+function redirectToIndexHall() {
+    
+    //alert("replace");
+    localStorage.setItem('isLogin', 'true');
+}
+
+
+  
+    </script>
+</body>
+</html>

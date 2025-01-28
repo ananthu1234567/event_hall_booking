@@ -1,0 +1,194 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins;
+}
+
+.logo{
+    font-size: 25px;
+    color: rgb(22, 22, 22);
+    top: 3%;
+    margin-left: 10px;
+
+
+}
+
+.logo:hover{
+    color: red;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(70, 68, 68, 0.1);
+}
+
+.nav-links
+{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.nav-links li{
+    margin-right: 50px;
+    
+}
+.nav-links li:last-child{
+    margin-right: 0;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: black;
+
+}
+.log{
+    background: rgb(10, 237, 233);
+    width: 150px;
+    border-radius: 15px;
+    padding: 10px;
+    transition: background-color 0.3s ease; /* Adding transition for smoother color change */
+    
+}
+
+.log1:hover{
+    color: red;;
+}
+
+.log:hover{
+    background-color: rgb(242, 15, 15);
+  
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+   
+    width: 100%;
+    height: 100%;
+    background-image: url('ncas8.jpeg');
+    background-size: cover;
+    filter: blur(5px); /* Adjust the blur intensity as needed */
+    z-index: -1;
+}
+.card{
+height: 350px;
+width: 350px;
+
+}
+
+.container
+{
+    display: flex;
+    
+}
+.container{
+    display: flex;
+    justify-content: center;
+   height: 90vh;
+   align-items: center;
+   position: fixed;
+   
+}
+
+
+.card{
+    height: 250px;
+    margin: 30px;
+    box-shadow: 5px 5px 20px black;
+    overflow: hidden;
+    
+}
+
+img
+{
+    height: 300px;
+    width: 500px;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+    background-position: center;
+}
+
+.name 
+{
+    height: 50px;
+    width: 350px;
+    padding: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 100px;
+    background: linear-gradient(to bottom, #f5f2f2, #fcfbfb);
+    color: rgb(18, 17, 17);
+    transition: 1s;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    transition: height 0.5s;
+    
+}
+
+h1{
+    margin: 5px;
+    font-size: 20px;
+   font-family: bebas neue;
+   letter-spacing: 2px;
+    color:rgb(8, 16, 52);
+    
+    
+}
+.name p{
+    font-size: 15px;
+    margin: 20px;
+    font-family: bebas neue;
+    font-weight: initial;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.name a{
+    margin-top: 10px;
+    color: #090909;
+    text-decoration: none;
+    font-size: 14px;
+    background: #4ed5ed;
+    border-radius: 100px;
+    padding: 5px 15px;
+    font-weight: bold;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.btn:hover{
+    background-color: rgb(33, 228, 72);
+}
+.card:hover
+{
+    cursor: pointer;
+}
+.card:hover .name{
+    height: 170px;
+    bottom: 120px;
+    background: linear-gradient(transparent, #f7f4f4, rgb(252, 251, 251));
+}
+
+.card:hover p{
+    opacity: 1;
+    visibility: visible;
+}
+
+.card:hover a{
+    opacity: 1;
+    visibility: visible;
+    
+}
+
+.card:hover img{
+    transform: scale(1.2);
+    z-index: 2;
+}

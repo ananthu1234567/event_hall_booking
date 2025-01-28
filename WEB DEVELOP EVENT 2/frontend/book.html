@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKING FORM</title>
+    <link rel="stylesheet" href="bookstyle.css">
+</head>
+<body>
+    
+<section class="container">
+    <header>BOOKING FORM</header>
+    <form action="#" class="form" id="bookingForm">
+       <div class="column">
+        <div class="input-boxx">
+            <label>Full name</label>
+            <input type="text" id="fullName" placeholder="Enter full name" required>
+        </div>
+            <div class="input-boxx">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+        </div>
+           
+        <div class="column">
+          <div class="input-boxx">
+            <label>Event Name</label>
+            <input type="text" id="eventName" placeholder="Event name" required>
+        </div>
+
+        <div class="input-boxx">
+            <label>Date</label>
+            <input type="date" id="eventDate" placeholder="Enter date" required>
+        </div>
+    </div>
+    <div class="column">
+        <div class="input-boxx">
+            <label>Start Time</label>
+            <input type="time" id="startTime" placeholder="Start time" required>
+        </div>
+        <div class="input-boxx">
+            <label>End Time</label>
+            <input type="time" id="endTime" placeholder="End Time" required>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="input-boxx">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Phone" required>
+        </div>
+        <div class="input-boxx">
+            <label>Department</label>
+            <input type="text" placeholder="Department" required>
+        </div>
+    </div>
+    <div class="column">
+        <div class="input-boxx">
+            <label>Number of Guests</label>
+            <input type="number" placeholder="---" required>
+        </div>
+        <div class="input-boxx">
+            <label>Purpose of the Event</label>
+            <input type="text" placeholder="Purpose" required>
+        </div>
+    </div>
+   
+    </div> 
+        <label>Duration:</label><br><br>
+        <div class="column">
+            <input type="radio" id="checkFullDay" name="duration" value="Full day">
+           <label for="checkFullDay">Full day</label>
+           <input type="radio" id="checkMorning" name="duration" value="Morning">
+           <label for="checkMorning">Morning</label>
+           <input type="radio" id="checkAfternoon" name="duration" value="Afternoon">
+           <label for="checkAfternoon">Afternoon</label>
+          </div><br>
+
+          <div class="column">
+            <label>Choose your necessaries:</label><br>
+            <ul class="checkbox-list">
+                <li>
+                    <input type="checkbox" id="checkProjector" name="necessaries">
+                    <label for="checkProjector">Projector</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="checkMic" name="necessaries">
+                    <label for="checkMic">Mic</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="checkAC" name="necessaries">
+                    <label for="checkAC">AC</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="checkBoard" name="necessaries">
+                    <label for="checkBoard">Board</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="checkWifi" name="necessaries">
+                    <label for="checkWifi">Wifi</label>
+                </li>
+            </ul>
+            
+        </div>  
+        <button type="submit">Register</button>
+           
+    </form>
+    <div id="confirmation" class="hidden"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingForm = document.getElementById('bookingForm');
+
+            bookingForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Get form data
+                const eventDate = document.getElementById('eventDate').value;
+                const eventName = document.getElementById('eventName').value;
+                const startTime = document.getElementById('startTime').value;
+                const endTime = document.getElementById('endTime').value;
+                const duration = document.querySelector('input[name="duration"]:checked').value;
+
+                // Create a new booking object
+                const newBooking = {
+                    eventDate: eventDate,
+                    eventName: eventName,
+                    startTime: startTime,
+                    endTime: endTime,
+                    duration: duration
+                };
+                
+
+                // Store the booking data in local storage
+                let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+                bookings.push(newBooking);
+                localStorage.setItem('bookings', JSON.stringify(bookings));
+
+                // Display confirmation message
+                alert('Booking registered successfully!');
+
+                // Navigate to the calendar page after registration
+                window.location.href = 'calendar.html';
+            });
+        });
+    </script>
+</section>
+    
+</body>
+</html>

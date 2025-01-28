@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrid page</title>
+    <link rel="stylesheet" href="hallstyle.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <nav class = "navbar">
+        <div class = "logo">
+            <i class='bx bxs-user'></i>
+            <span>User</span>
+        </div>
+        <ul class = "nav-links">
+            <li><a href = "#" class = "log1">Halls</a></li>
+            <li><a href = "login.html" class ="log">Log Out</a></li>
+        </ul>
+
+    </nav>
+
+    <div class = "container">
+        <div class = "card">
+            <img src ="ncas7.jpeg" src = "Convention center">
+            <div class = "name">
+                <h1>CONVENTION CENTER</h1>
+                <p>It is multipurpose hall which is one of the largest in India with a seating capacity of 4500 persons. </p>
+               <a href = "calendar.html" class = "btn">Book Now</a>
+            </div>
+        </div>
+        <div class = "card">
+            <img src ="ncas6.jpeg" src = "Convention center">
+            <div class = "name">
+                <h1>SEMINAR HALLS</h1>
+                <p>They are purpose-built spaces designed to host a variety of events, including workshops, conferences, and presentations.</p>
+                <a href = "semi.html" class = "btn">View</a>
+            </div>
+        </div>
+        <div class = "card">
+            <img src ="ncas.jpg" src = "Convention center">
+            <div class = "name">
+                <h1>CONFERENCE HALL</h1>
+                <p> It plays a vital role in collaboration,innovation,professional communities with seating capacity of 50 persons</p>
+                <a href = "calendar.html" class = "btn">Book Now</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.log').addEventListener('click',function(){
+            localStorage.removeItem('isLogin');
+            window.location.reload();
+        })
+    </script>
+</body>
+</html>
