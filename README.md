@@ -6,7 +6,7 @@ Event Hall Booking is a web application that allows users to manage bookings for
 ## Features
 - User registration and authentication
 - Booking management for different events
-- Calendar view for event scheduling
+- Email Confirmation of booking
 - Admin panel for managing events and bookings
 
 ## Installation Instructions
