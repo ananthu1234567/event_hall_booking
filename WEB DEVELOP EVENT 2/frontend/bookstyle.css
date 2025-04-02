@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin:0;
     padding:0;
@@ -165,3 +166,122 @@ button a{
     font-size: large;
     text-decoration: none;
 }
+=======
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.container header {
+    font-size: 22px;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.input-boxx {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.input-boxx label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-boxx input,
+.input-boxx textarea {
+    height: 40px;
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    background: #fff;
+}
+
+.input-boxx textarea {
+    height: 80px;
+    resize: none;
+}
+
+.input-boxx input::placeholder,
+.input-boxx textarea::placeholder {
+    color: #888;
+    font-size: 13px;
+}
+
+/* Two-column layout for fields */
+.two-column {
+    display: flex;
+    gap: 10px;
+}
+
+.two-column .input-boxx {
+    flex: 1;
+}
+
+/* Align Start Time & End Time, Date & Time on the same row */
+.inline-fields {
+    display: flex;
+    gap: 10px;
+}
+
+.inline-fields .input-boxx {
+    flex: 1;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.radio-group label {
+    font-size: 14px;
+    color: #333;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+>>>>>>> b7be0ff (Initial commit)

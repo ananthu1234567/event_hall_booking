@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Signup</title>
+    <link rel="stylesheet" href="loginstyle.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form id="signupForm">
+            <h1>Admin Signup</h1>
+            <div class="input-box">
+                <input type="email" id="email" name="email" placeholder="Admin Email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="input-box">
+                <input type="text" id="adminKey" name="adminKey" placeholder="Admin Secret Key" required>
+            </div>
+            <center><button type="submit" class="btn">Sign Up</button></center>
+            <p class="text-center">Already have an account <a href="admin.html">Login</a>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+            
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const adminKey = document.getElementById("adminKey").value;
+            
+            try {
+                const response = await fetch("http://localhost:5000/admin/signup", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email, password, adminKey })
+                });
+
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.message || "Signup failed");
+                }
+                
+                alert("Admin Signup Successful! You can now log in.");
+                window.location.href = "admin.html"; // Redirect to login page
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+    </script>
+</body>
+</html>

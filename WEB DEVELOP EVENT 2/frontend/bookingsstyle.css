@@ -1,0 +1,90 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 15px;
+}
+
+.navbar h1 {
+    margin: 0; /* Remove default margin */
+}
+
+/* Logout Button Styles */
+#logoutBtn {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding for the button */
+    text-decoration: none; /* Remove underline */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+#logoutBtn:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Table Container */
+.table-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50; /* Green background for header */
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Light gray background on hover */
+}
+
+/* Button Styles */
+button {
+    padding: 8px 12px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .table-container {
+        width: 90%; /* Make the table container responsive */
+    }
+
+    th, td {
+        font-size: 14px; /* Smaller font size on mobile */
+    }
+}

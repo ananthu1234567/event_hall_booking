@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Thrid page</title>
+=======
+    <title>Available Halls</title>
+>>>>>>> b7be0ff (Initial commit)
     <link rel="stylesheet" href="hallstyle.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+<<<<<<< HEAD
     <nav class = "navbar">
         <div class = "logo">
             <i class='bx bxs-user'></i>
@@ -54,3 +59,102 @@
     </script>
 </body>
 </html>
+=======
+    <nav class="navbar">
+        <h1 id="heading">Available Halls</h1>
+        <ul class="nav-links">
+            <li><a href="index.html" class="logout">Log Out</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="hallsContainer">
+        <p>Loading available halls...</p>
+    </div>
+
+    <script>
+        async function loadHalls() {
+    console.log("🔄 Fetching halls...");
+    try {
+        const response = await fetch('http://localhost:5000/api/viewhalls');
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        
+        const halls = await response.json();
+        console.log("✅ Fetched Halls:", halls);
+        renderHalls(halls.data || halls);
+        
+    } catch (error) {
+        console.error('❌ Error fetching halls:', error);
+        document.querySelector('#hallsContainer').innerHTML = '<p>Error loading halls. Please try again later.</p>';
+    }
+}
+
+function renderHalls(halls) {
+    console.log("🎨 Rendering Halls:", halls);
+
+    const container = document.querySelector('#hallsContainer');
+    container.innerHTML = '';
+
+    if (!halls || !Array.isArray(halls) || halls.length === 0) {
+        container.innerHTML = '<p>No active halls available.</p>';
+        return;
+    }
+
+    halls.forEach(hall => {
+        const hallDiv = document.createElement('div');
+        hallDiv.classList.add('card');
+
+        const imageSrc = hall.image 
+            ? `data:image/png;base64,${hall.image}` 
+            : 'defaultImage.png'; // Ensure a fallback image
+
+        hallDiv.innerHTML = `
+            <div class="details">
+                <center>
+                <img src="${imageSrc}" alt="Hall Image">
+                <h1>${hall.name}</h1>
+                <p><strong>Capacity:</strong> ${hall.capacity} Seats</p>
+                <p>${hall.description}</p>
+                <button class="btn" onclick="window.location.href='book.html?hallId=${hall._id}'">Book Now</button>
+                </center>
+            </div>
+        `;
+
+        container.appendChild(hallDiv);
+    });
+}
+
+// Load halls initially
+loadHalls();
+
+// Auto refresh every 10 seconds
+setInterval(loadHalls, 1000);
+
+
+
+
+        loadHalls();
+
+        setInterval(() => {
+            if (localStorage.getItem('hallUpdate') === 'true') {
+                loadHalls();
+                localStorage.setItem('hallUpdate', 'false');
+            }
+        }, 2000);
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const logButton = document.querySelector(".log");
+    if (logButton) {
+        logButton.addEventListener("click", function() {
+            localStorage.removeItem("isLogin");
+            window.location.reload();
+        });
+    } else {
+        console.warn("⚠️ Log button not found in the DOM.");
+    }
+});
+
+        
+    </script>
+</body>
+</html>
+>>>>>>> b7be0ff (Initial commit)

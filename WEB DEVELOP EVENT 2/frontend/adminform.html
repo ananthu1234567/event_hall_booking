@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Admin Page</title>
     <style>
         table {
@@ -114,3 +115,191 @@
                         color = 'blue';
                        break;
                 }}});</script>
+=======
+    <title>Admin - Manage Halls</title>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1>Admin Panel - Manage Halls</h1>
+      <button id="addhallBtn">Add Halls</button>
+        <button id="viewhallBtn">View Halls</button>
+        <button id="logoutBtn">Logout</button>
+    </nav>
+
+    
+    <!-- Pending Requests Section -->
+    <div class="table-container">
+        <h2>Pending Requests</h2>
+        <table id="pendingRequestsTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Event</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Pending bookings will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ✅ New Section: Accepted Bookings -->
+    <div class="table-container">
+        <h2>Accepted Bookings</h2>
+        <table id="acceptedBookingsTable">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Event Name</th>
+                    <th>Event Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Phone</th>
+                    <th>Department</th>
+                    <th>Guests</th>
+                    <th>Purpose</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Accepted bookings will be displayed here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+
+
+
+
+            let currentHallId = null; // Variable to store the current hall ID for editing
+
+            document.getElementById('logoutBtn').addEventListener('click', function () {
+                localStorage.removeItem('isAdmin');
+                console.log(localStorage.getItem("token"));
+
+                window.location.href = "index.html";
+            });
+
+            // Fetch accepted bookings and pending requests
+            fetchAcceptedBookings();
+            loadPendingRequests();
+        });
+
+        document.getElementById('addhallBtn').addEventListener('click', function () {
+                
+
+                window.location.href = "hall.html";
+            });
+
+            document.getElementById('viewhallBtn').addEventListener('click', function () {
+               
+
+                window.location.href = "hallview.html";
+            });
+        // Ensure fetchHalls() is correctly defined and called
+
+
+
+
+
+    
+
+
+        async function fetchAcceptedBookings() {
+            try {
+                const response = await fetch('http://localhost:5000/api/bookings/accepted');
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+                const bookings = await response.json();
+                const tableBody = document.querySelector('#acceptedBookingsTable tbody');
+                tableBody.innerHTML = '';
+
+                bookings.forEach(booking => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${booking.fullName}</td>
+                        <td>${booking.email}</td>
+                        <td>${booking.eventName}</td>
+                        <td>${booking.eventDate}</td>
+                        <td>${booking.startTime}</td>
+                        <td>${booking.endTime}</td>
+                        <td>${booking.phone}</td>
+                        <td>${booking.department}</td>
+                        <td>${booking.guests}</td>
+                        <td>${booking.purpose}</td>
+                        <td>${booking.duration}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('❌ Error fetching accepted bookings:', error);
+            }
+        }
+
+        async function loadPendingRequests() {
+            try {
+                const response = await fetch('http://localhost:5000/api/admin/bookings');
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+                const bookings = await response.json();
+                const tableBody = document.querySelector('#pendingRequestsTable tbody');
+                tableBody.innerHTML = '';
+
+                bookings.forEach(booking => {
+                    if (booking.status === "Pending") {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${booking.fullName}</td>
+                            <td>${booking.eventName}</td>
+                            <td>${booking.eventDate}</td>
+                            <td>
+                                <button class="approve-btn" data-id="${booking._id}">Approve</button>
+                                <button class="reject-btn" data-id="${booking._id}">Reject</button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    }
+                });
+
+                // Add event listeners for approve/reject buttons
+                tableBody.addEventListener('click', async function (event) {
+                    const bookingId = event.target.getAttribute('data-id');
+                    if (event.target.classList.contains('approve-btn')) {
+                        await updateBookingStatus(bookingId, 'Accepted');
+                    } else if (event.target.classList.contains('reject-btn')) {
+                        await updateBookingStatus(bookingId, 'Rejected');
+                    }
+                });
+
+            } catch (error) {
+                console.error('❌ Error loading pending requests:', error);
+            }
+        }
+
+        async function updateBookingStatus(bookingId, status) {
+            try {
+                const response = await fetch(`http://localhost:5000/api/bookings/${bookingId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ status }),
+                });
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                loadPendingRequests(); // Reload pending requests after update
+            } catch (error) {
+                console.error(`❌ Error updating booking status: ${error}`);
+            }
+        }
+    </script>
+
+</body>
+</html>
+>>>>>>> b7be0ff (Initial commit)

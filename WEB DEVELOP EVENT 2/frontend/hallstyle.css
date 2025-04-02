@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin: 0px;
     padding: 0px;
@@ -17,10 +18,47 @@
     color: red;
 }
 .navbar{
+=======
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Beautiful Gradient Background */
+body {
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #a18cd1, #fbc2eb, #a6c1ee, #fbc2eb);   background-size: 400% 400%;
+    height: 100vh;
+    animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#heading {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: #333; /* Dark gray for readability */
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 2px solid #ccc; /* Subtle separator */
+}
+
+
+/* Navbar Styling */
+.navbar {
+>>>>>>> b7be0ff (Initial commit)
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+<<<<<<< HEAD
     box-shadow: 0px 0px 10px rgba(70, 68, 68, 0.1);
 }
 
@@ -178,10 +216,172 @@ h1{
 }
 
 .card:hover p{
+=======
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 10px rgba(235, 231, 231, 0.1);
+}
+
+
+.logo {
+    font-size: 25px;
+    color: rgb(10, 237, 233);
+    margin-left: 10px;
+}
+
+.logo:hover {
+    color: rgb(255, 255, 255);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-size: 20px;
+}
+
+.nav-links li {
+    margin-right: 50px;
+}
+
+.nav-links li:last-child {
+    margin-right: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: rgb(10, 237, 233);
+}
+
+/* Button Styling */
+.logout {
+    background-color: #dc3545; /* Bootstrap Danger Red */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.logout:hover {
+    background-color: #c82333; /* Darker Red */
+    transform: scale(1.05);
+}
+
+.logout:active {
+    background-color: #a71d2a; /* Even Darker Red */
+    transform: scale(0.98);
+}
+
+
+/* Card Styling */
+/* Card Container */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Card Styling */
+.card {
+    width: 300px; /* Set fixed width for a balanced layout */
+    height: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    background: #fff;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Image Styling */
+.card img {
+    width: 100%;
+    height: 200px; /* Adjusted height */
+    object-fit: cover; /* Ensures the image fills without stretching */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: transform 0.5s;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+/* Name Section */
+.name {
+    padding: 15px;
+    text-align: center;
+    background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+    transition: 0.5s;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.name h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(8, 16, 52);
+}
+
+.name p {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.name button {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 14px;
+    background: #4ed5ed;
+    border-radius: 50px;
+    padding: 8px 15px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: background 0.3s ease, opacity 0.5s ease-in-out;
+}
+
+.name button:hover {
+    background: #3ab0c4;
+}
+
+/* Show Details on Hover */
+.card:hover .name {
+    background: linear-gradient(transparent, #ffffff, #f0f0f0);
+}
+
+.card:hover p, .card:hover button {
+>>>>>>> b7be0ff (Initial commit)
     opacity: 1;
     visibility: visible;
 }
 
+<<<<<<< HEAD
 .card:hover a{
     opacity: 1;
     visibility: visible;
@@ -192,3 +392,44 @@ h1{
     transform: scale(1.2);
     z-index: 2;
 }
+=======
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .card {
+        width: 90%; /* Makes cards responsive */
+    }
+    
+    .card img {
+        height: 180px; /* Slightly smaller for smaller screens */
+    }
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #28a745; /* Green color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #218838; /* Darker green */
+    transform: scale(1.05);
+}
+
+.btn:active {
+    background-color: #1e7e34; /* Even darker green */
+    transform: scale(0.98);
+}
+>>>>>>> b7be0ff (Initial commit)

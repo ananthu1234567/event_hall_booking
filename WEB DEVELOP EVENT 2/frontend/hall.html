@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Halls</title>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1>Admin Panel - Manage Halls</h1>
+        <button id="homeBtn">Home</button>
+    </nav>
+
+    
+
+    <!-- Form to add a new hall -->
+    <div class="form-container">
+        <h2>Add New Hall</h2>
+        <form id="addHallForm">
+            <label>Hall Name:</label>
+            <input type="text" id="hallName" placeholder="Enter hall name" required>
+
+            <label>Capacity:</label>
+            <input type="number" id="capacity" placeholder="Enter capacity" required>
+
+            <label>Upload Image:</label>
+            <input type="file" id="hallImage" accept="image/*" required>
+
+            <label>Description:</label>
+            <textarea id="description" placeholder="Enter hall description" required></textarea>
+
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+  
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            
+            // Add Hall Form Submission
+        document.getElementById('addHallForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const hallName = document.getElementById('hallName').value;
+        const capacity = document.getElementById('capacity').value;
+        const description = document.getElementById('description').value;
+        const file = document.getElementById('hallImage').files[0]; // Get uploaded file
+
+        if (!hallName || !capacity || !description) {
+            console.error("❌ All fields are required!");
+            return;
+        }
+
+        // Create FormData object
+        const formData = new FormData();
+        formData.append('name', hallName);
+        formData.append('capacity', capacity);
+        formData.append('description', description);
+        formData.append('Status', 'Status');
+
+        if (file) {
+            formData.append('image', file); // Append only if a new file is selected
+        }
+   
+        try {
+            let response;
+
+         
+            // ✅ ADD new hall
+            response = await fetch('http://localhost:5000/api/savehalls', {
+                method: 'POST',
+                body: formData,
+            });
+        
+
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+        console.log("✅ Hall added/updated successfully!");
+
+
+    } catch (error) {
+        console.error('❌ Error adding/updating hall:', error);
+    }
+
+    // Reset form and state
+    this.reset();
+    currentHallId = null;
+});
+
+
+
+           
+
+            let currentHallId = null; // Variable to store the current hall ID for editing
+
+            document.getElementById('logoutBtn').addEventListener('click', function () {
+                localStorage.removeItem('isAdmin');
+                console.log(localStorage.getItem("token"));
+
+                window.location.href = "index.html";
+            });
+
+        });
+
+        document.getElementById('homeBtn').addEventListener('click', function () {
+                
+
+                window.location.href = "adminform.html";
+            });
+
+
+    </script>
+
+</body>
+</html>

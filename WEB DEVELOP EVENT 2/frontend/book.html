@@ -10,6 +10,7 @@
     
 <section class="container">
     <header>BOOKING FORM</header>
+<<<<<<< HEAD
     <form action="#" class="form" id="bookingForm">
        <div class="column">
         <div class="input-boxx">
@@ -106,10 +107,95 @@
            
     </form>
     <div id="confirmation" class="hidden"></div>
+=======
+    <form id="bookingForm">
+       <div class="two-column">
+    <div class="input-boxx">
+        <label>Full name</label>
+        <input type="text" id="fullName" placeholder="Enter full name" required>
+    </div>
+    <div class="input-boxx">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="Phone" required>
+    </div>
+</div>
+
+       <div class="column">
+        <div class="input-boxx">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="Email" required>
+        </div>
+       </div>
+
+       <div class="column">
+          <div class="input-boxx">
+            <label>Event Name</label>
+            <input type="text" id="eventName" placeholder="Event name" required>
+          </div>
+       </div>
+
+       <!-- Date & Number of Guests in a single line -->
+       <div class="inline-fields">
+            <div class="input-boxx">
+                <label>Date</label>
+                <input type="date" id="eventDate" required>
+            </div>
+            <div class="input-boxx">
+                <label>Number of Guests</label>
+                <input type="number" id="guests" placeholder="---" required>
+            </div>
+       </div>
+
+       <!-- Start & End Time in a single line -->
+       <div class="inline-fields">
+            <div class="input-boxx">
+                <label>Start Time</label>
+                <input type="time" id="startTime" required>
+            </div>
+            <div class="input-boxx">
+                <label>End Time</label>
+                <input type="time" id="endTime" required>
+            </div>
+       </div>
+
+        <div class="column">
+            <div class="input-boxx">
+                <label>Department</label>
+                <input type="text" id="department" placeholder="Department" required>
+            </div>
+            <div class="input-boxx">
+                <label>Purpose of the Event</label>
+                <input type="text" id="purpose" placeholder="Purpose" required>
+            </div>
+        </div>
+
+        <!-- New Requirements Field -->
+        <div class="input-boxx">
+            <label>Requirements</label>
+            <textarea id="requirements" placeholder="Enter any special requirements (e.g., projector, mic, decorations, etc.)" rows="4" required></textarea>
+        </div>
+
+        <label>Duration:</label><br><br>
+        <div class="column">
+            <input type="radio" id="checkFullDay" name="duration" value="Full day" required>
+            <label for="checkFullDay">Full day</label>
+            <input type="radio" id="checkMorning" name="duration" value="Morning">
+            <label for="checkMorning">Morning (9:30 - 12:30)</label>
+            <input type="radio" id="checkAfternoon" name="duration" value="Afternoon">
+            <label for="checkAfternoon">Afternoon (12:30 - 3:30)</label>
+        </div><br>
+
+        <button type="submit">Register</button>
+        <button type="reset">Reset</button>
+        <button type="button" onclick="window.location.href='indexhall.html'">Cancel</button>
+        
+    </form>
+>>>>>>> b7be0ff (Initial commit)
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const bookingForm = document.getElementById('bookingForm');
+<<<<<<< HEAD
 
             bookingForm.addEventListener('submit', function(event) {
                 event.preventDefault();
@@ -141,10 +227,59 @@
 
                 // Navigate to the calendar page after registration
                 window.location.href = 'calendar.html';
+=======
+            const eventDateInput = document.getElementById('eventDate');
+
+            // Set the minimum date to today
+            let today = new Date().toISOString().split('T')[0];
+            eventDateInput.setAttribute('min', today);
+
+            bookingForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                // Get form data
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    eventName: document.getElementById('eventName').value,
+                    eventDate: eventDateInput.value,
+                    guests: document.getElementById('guests').value,
+                    startTime: document.getElementById('startTime').value,
+                    endTime: document.getElementById('endTime').value,
+                    department: document.getElementById('department').value,
+                    purpose: document.getElementById('purpose').value,
+                    requirements: document.getElementById('requirements').value,
+                    duration: document.querySelector('input[name="duration"]:checked').value
+                };
+
+                // Send booking request to the backend
+                try {
+                    const response = await fetch('http://localhost:5000/api/bookings', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (response.ok) {
+                        alert('Booking registered successfully!');
+                        window.location.href = 'indexhall.html';
+                    } else {
+                        alert('Failed to register booking. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error submitting booking.');
+                }
+>>>>>>> b7be0ff (Initial commit)
             });
         });
     </script>
 </section>
     
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> b7be0ff (Initial commit)

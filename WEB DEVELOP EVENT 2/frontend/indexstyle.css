@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #bdcontainer
 {background-image: url('ncas2.jpg');
     background-size: cover;
@@ -84,3 +85,127 @@ button:hover {
   }
 
 
+=======
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Beautiful Gradient Background */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460, #1b262c, #0a3d62);
+background-size: 400% 400%;
+
+
+    height: 100vh;
+    animation: gradientAnimation 10s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header */
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+header h2 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* Main Content */
+main {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+/* Features List */
+#features ul {
+    list-style: none;
+    color: #fff;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+/* Buttons */
+#buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+button {
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Admin Button */
+.button-admin {
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    color: white;
+}
+
+.button-admin:hover {
+    background: linear-gradient(135deg, #b71c1c, #d32f2f);
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 20px rgba(211, 47, 47, 0.4);
+}
+
+
+/* Get Started Button */
+.button-start {
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+    color: white;
+}
+
+.button-start:hover {
+    background: linear-gradient(135deg, #0d47a1, #1565c0);
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 20px rgba(21, 101, 192, 0.4);
+}
+
+
+
+
+/* Extra Section */
+#extra-section {
+    margin-top: 30px;
+    color: white;
+    font-size: 18px;
+}
+>>>>>>> b7be0ff (Initial commit)
